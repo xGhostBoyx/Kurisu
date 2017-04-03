@@ -242,6 +242,19 @@ class Err:
         '160-0104': '"The system memory is corrupted (SLC)."',
         '160-0105': 'USB storage corrupted?',
         '199-9999': 'Usually occurs when trying to run an unsigned title without signature patches, or something unknown(?) is corrupted.',
+        # Switch
+        '007-1037': 'Could Not Detect an SD Card.',
+        '2001-0125': 'Executed svcCloseHandle on main-thread handle',
+        '2002-6063': 'Attempted to read eMMC CID from browser?',
+        '2005-0003': 'You are unable to download software.',
+        '2162-0002': 'General userland crash',
+        '2164-0020': 'Error starting software.',
+        '2168-0000': 'Illegal opcode.',
+        '2168-0001': 'Resource/Handle not available.',
+        '2168-0002': 'Segmentation Fault.',
+        '2168-0003': 'Memory access must be 4 bytes aligned.',
+        '2811-5001': 'General connection error.'
+        
     }
 
     def get_name(self, d, k):
@@ -278,8 +291,6 @@ class Err:
                 embed.color = (Color(0xCE181E) if err[0] == "0" else Color(0x009AC7))
         # 0xE60012
         elif re.match('[0-9][0-9][0-9][0-9]\-[0-9][0-9][0-9][0-9]', err):
-            await self.bot.say("Nintendo Switch error codes not yet implemented. This will probably be added once Nintendo Support can use switch error codes....")
-            return
             embed = discord.Embed(title=err + ": Nintendo Switch")
             embed.url = "http://www.nintendo.com/consumer/wfc/en_na/ds/results.jsp?error_code={}&system=switch&locale=en_US".format(err)
             if err not in self.errcodes:
