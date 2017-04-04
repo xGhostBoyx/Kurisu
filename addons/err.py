@@ -291,7 +291,7 @@ class Err:
                 embed.color = (Color(0xCE181E) if err[0] == "0" else Color(0x009AC7))
         # 0xE60012
         # Switch Error Codes (w/ website)
-        elif re.match('[2][1][1][0]\-[1][0-9][0-9][0-9]', err):
+        elif re.match('[2-2][1-1][1-1][0-0]\-[1-1][0-9][0-9][0-9]', err):
             embed = discord.Embed(title=err + ": Nintendo Switch")
             embed.url = "http://en-americas-support.nintendo.com/app/answers/detail/a_id/22594"
             embed = discord.Embed("General connection error.")
