@@ -244,15 +244,15 @@ class Err:
         '199-9999': 'Usually occurs when trying to run an unsigned title without signature patches, or something unknown(?) is corrupted.',
         # Switch
         '007-1037': 'Could Not Detect an SD Card.',
-        '2001-0125': 'Executed svcCloseHandle on main-thread handle',
-        '2002-6063': 'Attempted to read eMMC CID from browser?',
+        '2001-0125': 'Executed svcCloseHandle on main-thread handle (THIS CODE HAS NO KNOWN SUPPORT PAGE)',
+        '2002-6063': 'Attempted to read eMMC CID from browser? (THIS CODE HAS NO KNOWN SUPPORT PAGE)',
         '2005-0003': 'You are unable to download software.',
         '2162-0002': 'General userland crash',
         '2164-0020': 'Error starting software.',
-        '2168-0000': 'Illegal opcode.',
-        '2168-0001': 'Resource/Handle not available.',
-        '2168-0002': 'Segmentation Fault.',
-        '2168-0003': 'Memory access must be 4 bytes aligned.',
+        '2168-0000': 'Illegal opcode. (THIS CODE HAS NO KNOWN SUPPORT PAGE)',
+        '2168-0001': 'Resource/Handle not available. (THIS CODE HAS NO KNOWN SUPPORT PAGE)',
+        '2168-0002': 'Segmentation Fault. (THIS CODE HAS NO KNOWN SUPPORT PAGE)',
+        '2168-0003': 'Memory access must be 4 bytes aligned. (THIS CODE HAS NO KNOWN SUPPORT PAGE)',
         '2811-5001': 'General connection error.'
         
     }
@@ -291,13 +291,49 @@ class Err:
                 embed.color = (Color(0xCE181E) if err[0] == "0" else Color(0x009AC7))
         # 0xE60012
         elif re.match('[0-9][0-9][0-9][0-9]\-[0-9][0-9][0-9][0-9]', err):
-            embed = discord.Embed(title=err + ": Nintendo Switch")
-            embed.url = "http://www.nintendo.com/consumer/wfc/en_na/ds/results.jsp?error_code={}&system=switch&locale=en_US".format(err)
-            if err not in self.errcodes:
-                embed.description = "I don't know this one! Click the error code for details on Nintendo Support.\n\nIf you keep getting this issue and Nintendo Support does not help, or know how to fix it, you should report relevant details to <@78465448093417472> so it can be added to the bot."
-            else:
+            if re.match('[2][1][1][0]\-[1][0-9][0-9][0-9]', err)
+                embed = discord.Embed(title=err + ": Nintendo Switch")
+                embed.url = "http://en-americas-support.nintendo.com/app/answers/detail/a_id/22594"
+                embed = discord.Embed("General connection error.")
+                embed.color = Color(0xE60012)
+            elif re.match('[2][1][1][0]\-[2][9][0-9][0-9]', err)
+                embed = discord.Embed(title=err + ": Nintendo Switch")
+                embed.url = "http://en-americas-support.nintendo.com/app/answers/detail/a_id/22277/p/897"
+                embed = discord.Embed("General connection error.")
+                embed.color = Color(0xE60012)
+            elif re.match('[2][1][1][0]\-[2][0-8][0-9][0-9]', err)
+                embed = discord.Embed(title=err + ": Nintendo Switch")
+                embed.url = "http://en-americas-support.nintendo.com/app/answers/detail/a_id/22263/p/897"
+                embed = discord.Embed("General connection error.")
+                embed.color = Color(0xE60012)
+            elif re.match('[2][0][0][5]\-[0][0][0][3]', err)
+                embed.url = "http://en-americas-support.nintendo.com/app/answers/detail/a_id/22393"
                 embed.description = self.errcodes[err]
                 embed.color = Color(0xE60012)
+            elif re.match('[2][1][1][0]\-[3][4][0][0]', err)
+                embed.url = "http://en-americas-support.nintendo.com/app/answers/detail/a_id/22569/p/897"
+                embed.description = self.errcodes[err]
+                embed.color = Color(0xE60012)
+            elif re.match('[2][1][6][2]\-[0][0][0][2]', err)
+                embed.url = "http://en-americas-support.nintendo.com/app/answers/detail/a_id/22596"
+                embed.description = self.errcodes[err]
+                embed.color = Color(0xE60012)
+            elif re.match('[2][1][6][4]\-[0][0][2][0]', err)
+                embed.url = "http://en-americas-support.nintendo.com/app/answers/detail/a_id/22539/p/897"
+                embed.description = self.errcodes[err]
+                embed.color = Color(0xE60012)
+            elif re.match('[2][8][1][1]\-[5][0][0][1]', err)
+                embed.url = "http://en-americas-support.nintendo.com/app/answers/detail/a_id/22392/p/897"
+                embed.description = self.errcodes[err]
+                embed.color = Color(0xE60012)
+            else: 
+                embed = discord.Embed(title=err + ": Nintendo Switch")
+                embed.url = "http://en-americas-support.nintendo.com/app/answers/landing/p/897".format(err)
+                if err not in self.errcodes:
+                    embed.description = "I don't know this one! Click the error code for details on Nintendo Support.\n\nIf you keep getting this issue and Nintendo Support does not help, or know how to fix it, you should report relevant details to <@78465448093417472> so it can be added to the bot."
+                else:
+                    embed.description = self.errcodes[err]
+                    embed.color = Color(0xE60012)
         else:
             err = err.strip()
             if err.startswith("0x"):
