@@ -294,7 +294,6 @@ class Err:
         elif re.match('[2][1][1][0]\-[1][0-9][0-9][0-9]', err):
             embed = discord.Embed(title=err + ": Nintendo Switch")
             embed.url = "http://en-americas-support.nintendo.com/app/answers/detail/a_id/22594"
-            embed = discord.Embed("General connection error.")
             embed.color = Color(0xE60012)
         elif re.match('[2][1][1][0]\-[2][9][0-9][0-9]', err):
             embed = discord.Embed(title=err + ": Nintendo Switch")
