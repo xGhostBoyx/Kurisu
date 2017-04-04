@@ -291,7 +291,7 @@ class Err:
                 embed.color = (Color(0xCE181E) if err[0] == "0" else Color(0x009AC7))
         # 0xE60012
         # Switch Error Codes (w/ website)
-        elif re.match('[2-2][1-1][1-1][0-0]\-[1-1][0-9][0-9][0-9]', err):
+        elif re.match('[2][1][1][0]\-[1][0-9][0-9][0-9]', err):
             embed = discord.Embed(title=err + ": Nintendo Switch")
             embed.url = "http://en-americas-support.nintendo.com/app/answers/detail/a_id/22594"
             embed = discord.Embed("General connection error.")
@@ -307,22 +307,27 @@ class Err:
             embed = discord.Embed("General connection error.")
             embed.color = Color(0xE60012)
         elif re.match('[2][0][0][5]\-[0][0][0][3]', err):
+            embed = discord.Embed(title=err + ": Nintendo Switch")
             embed.url = "http://en-americas-support.nintendo.com/app/answers/detail/a_id/22393"
             embed.description = self.errcodes[err]
             embed.color = Color(0xE60012)
         elif re.match('[2][1][1][0]\-[3][4][0][0]', err):
+            embed = discord.Embed(title=err + ": Nintendo Switch")
             embed.url = "http://en-americas-support.nintendo.com/app/answers/detail/a_id/22569/p/897"
             embed.description = self.errcodes[err]
             embed.color = Color(0xE60012)
         elif re.match('[2][1][6][2]\-[0][0][0][2]', err):
+            embed = discord.Embed(title=err + ": Nintendo Switch")
             embed.url = "http://en-americas-support.nintendo.com/app/answers/detail/a_id/22596"
             embed.description = self.errcodes[err]
             embed.color = Color(0xE60012)
         elif re.match('[2][1][6][4]\-[0][0][2][0]', err):
+            embed = discord.Embed(title=err + ": Nintendo Switch")
             embed.url = "http://en-americas-support.nintendo.com/app/answers/detail/a_id/22539/p/897"
             embed.description = self.errcodes[err]
             embed.color = Color(0xE60012)
         elif re.match('[2][8][1][1]\-[5][0][0][1]', err):
+            embed = discord.Embed(title=err + ": Nintendo Switch")
             embed.url = "http://en-americas-support.nintendo.com/app/answers/detail/a_id/22392/p/897"
             embed.description = self.errcodes[err]
             embed.color = Color(0xE60012)
